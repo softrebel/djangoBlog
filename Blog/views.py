@@ -4,3 +4,6 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("salam aleykom. this is first view for Blog app")
+
+def about(request):
+    return HttpResponse("kari az kusha")
