@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from djangoBlog.settings import BASE_DIR
 
 
 def index(request):
