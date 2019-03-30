@@ -12,5 +12,5 @@ def about(request):
     return HttpResponse("kari az kusha")
 
 def posts(request):
-    list = Post.objects.all().order_by('-id')[:2]
+    list = Post.objects.all().order_by('-id')
     return render(request, 'post.html', {'posts': list})

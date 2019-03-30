@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Posts:</h1>
+<ul>
+{% for i in posts %}
+    <div>
+    <h2>{{ i.title }}</h2>
+    <p>{{ i.content }}</p>
+    </div>
+{% endfor %}
+</ul>
+</body>
+</html>
