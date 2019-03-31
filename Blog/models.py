@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractBaseUser, User
 from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
-import os, importlib, importlib.util
 from Blog.base import *
 
 
@@ -42,20 +41,14 @@ class Post(models.Model):
     publishDate = models.DateTimeField(auto_now_add=True)
     allowComment=models.BooleanField(default=True)
     image = models.ImageField(upload_to='images/%Y-%m-%d', blank=True, null=True)
+    tags = models.ManyToManyField(Tag)
 
     def __str__(self):
         return '%s' % self.title
 
 
 
-def import_file(file):
-    path = modelsPath + os.sep + file
-    if not os.path.isfile(path):
-        return
-    spec = importlib.util.spec_from_file_location("Blog.Models", path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    globals().update(module.__dict__)
+
 
 
 files = os.listdir(modelsPath)
