@@ -16,7 +16,7 @@ class Profile(AbstractBaseUser):
     nationalCode = models.CharField(max_length=10, null=True)
     tellNumber = models.CharField(max_length=17, null=True)
     birthDate = models.DateTimeField(auto_now=True, null=False)
-    avatar = models.ImageField(upload_to='profile', blank=True, null=True)
+    avatar = models.ImageField(upload_to='avatar/%Y-%m-%d/', blank=True, null=True)
 
     def __str__(self):
         return '%s %s' % (self.firstName, self.lastName)
@@ -24,7 +24,7 @@ class Profile(AbstractBaseUser):
 
 class File(models.Model):
     id = models.AutoField(primary_key=True)
-    file = models.FileField(upload_to='files/%Y-%m-%d')
+    file = models.FileField(upload_to='files/%Y-%m-%d/')
     content_type = models.ForeignKey(ContentType, on_delete=models.DO_NOTHING)
     object_id = models.CharField(max_length=50)
     content_object = GenericForeignKey('content_type', 'object_id')
